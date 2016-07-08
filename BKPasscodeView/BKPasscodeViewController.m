@@ -194,9 +194,9 @@ typedef enum : NSUInteger {
     inputView.enabled = NO;
     
     if (minutes == 1) {
-        inputView.title = NSLocalizedStringFromTable(@"Try again in 1 minute", @"BKPasscodeView", @"1분 후에 다시 시도");
+        inputView.title = NSLocalizedString(@"Try again in 1 minute", @"1분 후에 다시 시도");
     } else {
-        inputView.title = [NSString stringWithFormat:NSLocalizedStringFromTable(@"Try again in %d minutes", @"BKPasscodeView", @"%d분 후에 다시 시도"), minutes];
+        inputView.title = [NSString stringWithFormat:NSLocalizedString(@"Try again in %d minutes", @"%d분 후에 다시 시도"), minutes];
     }
     
     NSUInteger numberOfFailedAttempts = [self.delegate passcodeViewControllerNumberOfFailedAttempts:self];
@@ -312,22 +312,22 @@ typedef enum : NSUInteger {
     switch (self.currentState) {
         case BKPasscodeViewControllerStateCheckPassword:
             if (self.type == BKPasscodeViewControllerChangePasscodeType) {
-                passcodeInputView.title = NSLocalizedStringFromTable(@"Enter your old passcode", @"BKPasscodeView", @"기존 암호 입력");
+                passcodeInputView.title = NSLocalizedString(@"Enter your old passcode", @"기존 암호 입력");
             } else {
-                passcodeInputView.title = NSLocalizedStringFromTable(@"Enter your passcode", @"BKPasscodeView", @"암호 입력");
+                passcodeInputView.title = NSLocalizedString(@"Enter your passcode", @"암호 입력");
             }
             break;
             
         case BKPasscodeViewControllerStateInputPassword:
             if (self.type == BKPasscodeViewControllerChangePasscodeType) {
-                passcodeInputView.title = NSLocalizedStringFromTable(@"Enter your new passcode", @"BKPasscodeView", @"새로운 암호 입력");
+                passcodeInputView.title = NSLocalizedString(@"Enter your new passcode", @"새로운 암호 입력");
             } else {
-                passcodeInputView.title = NSLocalizedStringFromTable(@"Enter a passcode", @"BKPasscodeView", @"암호 입력");
+                passcodeInputView.title = NSLocalizedString(@"Enter a passcode", @"암호 입력");
             }
             break;
             
         case BKPasscodeViewControllerStateReinputPassword:
-            passcodeInputView.title = NSLocalizedStringFromTable(@"Re-enter your passcode", @"BKPasscodeView", @"암호 재입력");
+            passcodeInputView.title = NSLocalizedString(@"Re-enter your passcode", @"암호 재입력");
             break;
             
         default:
@@ -338,11 +338,11 @@ typedef enum : NSUInteger {
 - (void)showFailedAttemptsCount:(NSUInteger)failCount inputView:(BKPasscodeInputView *)aInputView
 {
     if (failCount == 0) {
-        aInputView.errorMessage = NSLocalizedStringFromTable(@"Invalid Passcode", @"BKPasscodeView", @"잘못된 암호");
+        aInputView.errorMessage = NSLocalizedString(@"Invalid Passcode", @"잘못된 암호");
     } else if (failCount == 1) {
-        aInputView.errorMessage = NSLocalizedStringFromTable(@"1 Failed Passcode Attempt", @"BKPasscodeView", @"1번의 암호 입력 시도 실패");
+        aInputView.errorMessage = NSLocalizedString(@"1 Failed Passcode Attempt", @"1번의 암호 입력 시도 실패");
     } else {
-        aInputView.errorMessage = [NSString stringWithFormat:NSLocalizedStringFromTable(@"%d Failed Passcode Attempts", @"BKPasscodeView", @"%d번의 암호 입력 시도 실패"), failCount];
+        aInputView.errorMessage = [NSString stringWithFormat:NSLocalizedString(@"%d Failed Passcode Attempts", @"%d번의 암호 입력 시도 실패"), failCount];
     }
 }
 
@@ -457,7 +457,7 @@ typedef enum : NSUInteger {
             if (self.type == BKPasscodeViewControllerChangePasscodeType && [self.oldPasscode isEqualToString:passcode]) {
                 
                 aInputView.passcode = nil;
-                aInputView.message = NSLocalizedStringFromTable(@"Enter a different passcode. Cannot re-use the same passcode.", @"BKPasscodeView", @"다른 암호를 입력하십시오. 동일한 암호를 다시 사용할 수 없습니다.");
+                aInputView.message = NSLocalizedString(@"Enter a different passcode. Cannot re-use the same passcode.", @"다른 암호를 입력하십시오. 동일한 암호를 다시 사용할 수 없습니다.");
                 
             } else {
                 
@@ -496,7 +496,7 @@ typedef enum : NSUInteger {
                 
                 [self updatePasscodeInputViewTitle:newPasscodeInputView];
                 
-                newPasscodeInputView.message = NSLocalizedStringFromTable(@"Passcodes did not match.\nTry again.", @"BKPasscodeView", @"암호가 일치하지 않습니다.\n다시 시도하십시오.");
+                newPasscodeInputView.message = NSLocalizedString(@"Passcodes did not match.\nTry again.", @"암호가 일치하지 않습니다.\n다시 시도하십시오.");
                 
                 [self.shiftingView showView:newPasscodeInputView withDirection:BKShiftingDirectionBackward];
                 
